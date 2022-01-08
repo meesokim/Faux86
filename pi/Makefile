@@ -2,8 +2,10 @@
 # Makefile
 #
 
+RASPPI=3
 CIRCLEHOME = ../../circle
 SRCDIR = ../src/faux86
+INCLUDE += ../src/faux86
 
 OBJS	=  kernel.o main.o CircleHostInterface.o PWMSound.o VCHIQSound.o \
 	  $(SRCDIR)/Adlib.o \
@@ -57,4 +59,31 @@ LIBS	= $(CIRCLEHOME)/addon/SDCard/libsdcard.a \
 #	  $(CIRCLEHOME)/lib/fs/libfs.a \
 #	  $(CIRCLEHOME)/lib/libcircle.a
 
+
 include $(CIRCLEHOME)/sample/Rules.mk
+
+clean0:
+	$(RM) *.o $(SRCDIR)/*.o $(LIBS)
+	make -C $(CIRCLEHOME)/addon/SDCard/ clean
+	make -C $(CIRCLEHOME)/addon/vc4/sound/ clean
+	make -C $(CIRCLEHOME)/addon/vc4/vchiq/ clean
+	make -C $(CIRCLEHOME)/addon/linux/ clean
+	make -C $(CIRCLEHOME)/addon/fatfs/ clean
+	make -C $(CIRCLEHOME)/lib/sched/ clean
+	make -C $(CIRCLEHOME)/lib/usb/ clean
+	make -C $(CIRCLEHOME)/lib/input/ clean
+	make -C $(CIRCLEHOME)/lib/fs/ clean
+	make -C $(CIRCLEHOME)/lib/ clean
+	sh -c "cd $(CIRCLEHOME); ./makeall clean"
+
+libs:
+	make -C $(CIRCLEHOME)/addon/SDCard/ 
+	make -C $(CIRCLEHOME)/addon/vc4/sound/
+	make -C $(CIRCLEHOME)/addon/vc4/vchiq/
+	make -C $(CIRCLEHOME)/addon/linux/
+	make -C $(CIRCLEHOME)/addon/fatfs/
+	make -C $(CIRCLEHOME)/lib/sched/
+	make -C $(CIRCLEHOME)/lib/usb/
+	make -C $(CIRCLEHOME)/lib/input/
+	make -C $(CIRCLEHOME)/lib/fs/
+	make -C $(CIRCLEHOME)/lib/

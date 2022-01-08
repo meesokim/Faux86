@@ -18,7 +18,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-#include "config.h"
+#include "Config.h"
 
 #ifdef CPU_ADDR_MODE_CACHE
 struct addrmodecache_s addrcache[0x100000];

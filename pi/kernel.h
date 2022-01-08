@@ -40,7 +40,7 @@
 #include <circle/sched/scheduler.h>
 
 
-#define USE_BCM_FRAMEBUFFER 1
+#define USE_BCM_FRAMEBUFFER 0
 #define USE_EMBEDDED_BOOT_FLOPPY 0
 #define USE_EMBEDDED_ROM_IMAGES 0
 #define USE_MMC_MOUNTING 1
